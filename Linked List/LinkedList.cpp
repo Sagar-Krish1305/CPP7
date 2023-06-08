@@ -9,7 +9,15 @@ class Node{
        this->data = data;
        next = NULL;
     }
-
+    Node* reverse(){
+        Node* _this = this;
+        if(_this == NULL || _this->next == NULL) return _this;
+        Node* temp = _this->next->reverse();
+        _this->next->next = _this;
+        _this->next = NULL;
+        
+        return temp;
+    }
     void show(){
         Node* curr = this;
         while(curr!=NULL){
@@ -20,14 +28,22 @@ class Node{
     }
     
 };
-Node* reverse(Node* n){
-        Node* _this = n;
-        if(_this == NULL || _this->next == NULL) return _this;
-        Node* temp = reverse(_this->next);
-        _this->next->next = _this;
-        _this->next = NULL;
-        return temp;
+
+Node* copy(Node* n){
+    Node* curr = n;
+    Node* dummy = new Node(1);
+    Node* ans = dummy;
+    while(curr!=NULL){
+        Node* temp = new Node(curr->data);
+        dummy->next = temp;
+        dummy = temp;
+        curr = curr->next;
     }
+
+    return ans->next;
+    
+}
+
 Node* createALinkedList(){
     int n; cin >> n;
     if(n==-1)return NULL;
@@ -39,7 +55,10 @@ int main(){
     
     Node* n = createALinkedList();
     n->show();
-    Node* n2 = reverse(n);
+    Node* n2 = copy(n);
+    n2->show();
+    n2 = n2->reverse();
+    n2->show();
     
     
   return 0;
