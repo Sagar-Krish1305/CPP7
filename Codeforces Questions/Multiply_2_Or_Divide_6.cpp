@@ -1,21 +1,24 @@
 #include<iostream>
 using namespace std;
 int getAnswer(int n){
-    int count = 0 ;
+    int count3 = 0, count2=0;
     while(n%3==0){
         n/=3;
-        count++;
+        count3++; 
     }
-    /////////////////////////
-    int power = (int)log2(n);
-    if((int)pow(2,power)!=n){
-        return -1;
+    while (n%2==0)
+    {
+        n/=2;
+        count2++;
     }
 
-    if(count < power){
-        return -1;
+    if(n!=1) return -1;
+    
+    if(count3>=count2){
+        return count3 + (count3-count2);
     }
-    return max(power,count);
+
+    return -1;
 
 }
 int main(){
