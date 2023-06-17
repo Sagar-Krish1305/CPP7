@@ -17,19 +17,26 @@ Node* insertion(Node* root,int data){
        
         if(root==NULL) return new Node(data);
         if(root->data < data){
-            root->left = insertion(root->left,data);
-        }else if(root->data > data){
             root->right = insertion(root->right,data);
+        }else if(root->data > data){
+            root->left = insertion(root->left,data);
         }
         return root;
     }
 
 void inOrder(Node* root){
     if(root==NULL) return;
-    
     inOrder(root->left);
     cout << root->data << " ";
     inOrder(root->right);
+}
+
+void preOrder(Node* root){
+    if(root==NULL) return;
+
+    cout << root->data << " ";
+    preOrder(root->left);
+    preOrder(root->right);
 }
 
 Node* createBST(){
@@ -42,7 +49,6 @@ Node* createBST(){
     }
     return temp;
 }
-
 int main(){
     
     Node* temp = createBST();

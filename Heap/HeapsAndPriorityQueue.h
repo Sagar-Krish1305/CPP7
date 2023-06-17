@@ -1,9 +1,3 @@
-#include<iostream>
-#include<map>
-using namespace std;
-#define T int
-#define maxSize 1000
-// All Operations Made Here are of MAX_HEAP
 class Heap{
 
     private:
@@ -206,22 +200,3 @@ int kthLargestElement(int* arr, int n, int k){
     }
     return p.maxElement();
 }   
-int main(){
-    
-    
-
-    
-    // if(k == e) PQ = HEAP
-    
-    int arr[] = {1,53,23,51,13,32,12,65,58,86,75};
-  // Ans For Following --> 86 75 65 58 53
-    int n = 11;
-    int k = 4;
-    PriorityQueue q;
-     
-     cout << kthLargestElement(arr,n,k);
-    
-
-
-  return 0;
-}
