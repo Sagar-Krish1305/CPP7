@@ -1,4 +1,5 @@
 #include<iostream>
+#include<queue>
 using namespace std;
 class Node{
     public:
@@ -24,6 +25,33 @@ Node* insertion(Node* root,int data){
         return root;
     }
 
+Node* deletion(Node* root, int data){
+    
+        if(root->data > data){
+            // Move Left
+            return deletion(root->left,data);
+        }else if(root->data < data){
+            // Move Right
+            return deletion(root->right,data);
+        }
+    
+    
+    if(root->left == NULL && root->right == NULL){
+        return NULL;
+    }
+    if(root->left == NULL) return root->right;
+    if(root->right == NULL) return root->left;
+
+    Node* succ = root->right;
+    while(succ->left!=NULL){
+        succ = succ->left;
+    }
+    int d = succ->data;
+    deletion(root->right,succ->data);
+    
+    root->data = d;
+    return root;
+}
 void inOrder(Node* root){
     if(root==NULL) return;
     inOrder(root->left);
@@ -49,9 +77,29 @@ Node* createBST(){
     }
     return temp;
 }
+void levelOrderTraversal(Node* root){
+    queue<Node*> q;
+    q.push(root);
+    while(!q.empty()){
+        Node* temp = q.front();
+        cout << temp->data << " ";
+        q.pop();
+        if(temp->left != NULL)
+        q.push(temp->left);
+         if(temp->right != NULL)
+        q.push(temp->right);
+    }
+    
+}
 int main(){
     
     Node* temp = createBST();
-    inOrder(temp);
+    // inOrder(temp);
+    levelOrderTraversal(temp);
+    int n;
+    cout << "\nN?"<< endl;
+    cin >> n;
+    deletion(temp,n);
+    levelOrderTraversal(temp);
   return 0;
 }
