@@ -4,25 +4,15 @@ using namespace std;
 int main(){
     int t;
     cin >> t;
-    while (t--))
-    {
-        int q;
-        int queries[q];
-        int max = -1;
-        for(int i = 0 ; i < q ; i++){
-            cin >> queries[i];
-            if(queries[i] >= max){
-                max = queries[i];
-                cout << "1";
-            }else{
-                if(queries[i] <= queries[0]){
-                    cout << "1";
-                }else{
-                    cout << "0";
-                }
-            }
+    while (t--){
+        int n;
+        cin >> n;
+        int arr[2*n];
+        for (int i = 0; i < 2*n; i++){
+            cin >> arr[i];
         }
-        cout << endl;
+        sort(arr,arr+2*n);
+        cout << abs(arr[n-1] - arr[n]) << endl;
     }
     
 }
