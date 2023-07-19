@@ -5,14 +5,11 @@ int main(){
     int t;
     cin >> t;
     while (t--){
-        int n;
-        cin >> n;
-        int arr[2*n];
-        for (int i = 0; i < 2*n; i++){
-            cin >> arr[i];
-        }
-        sort(arr,arr+2*n);
-        cout << abs(arr[n-1] - arr[n]) << endl;
+        int N;
+        cin >> N;
+        long long x = (N+1)/2 - 1;
+        cout << 8*x*(x+1)*(2*x + 1)/6 << endl;
+        
     }
     
 }
