@@ -15,40 +15,43 @@
 using namespace std;
 
 
-char invertChar(char c){
-    if(c >= 'a' && c <= 'z'){
-        return c - 'a' + 'A';
+long long binarySearchForTheQuestion(long long low, long long high, long long sum, long long sumSquare, long long c, int n){
+
+    if(low <= high){
+        long long mid = (low + high)/2;
+        if(mid < 0){
+           return -1;
+        }
+        long long ans = sumSquare + 4*mid*sum + 4*mid*mid*n;
+        if(ans > c){
+            return binarySearchForTheQuestion(low, mid-1, sum, sumSquare, c, n);
+        }else if(ans < c){
+            return binarySearchForTheQuestion(mid+1, high, sum, sumSquare, c, n);
+        }
+        return mid;
     }
-    return c + 'a' - 'A';
+
+    return binarySearchForTheQuestion(high,2*high,sum,sumSquare,c,n);
 }
 int main(){
     int t;
     cin >> t;
     while (t--){
-        int m;
-        cin >> m;
-        vector<int> v(50000);
-        for(int i = 0 ; i < m ; i++){
-            int n;
-            cin >> n;
-            
-            int k;
-            for(int j = 0 ; j < n ; j++){
-                cin >> k;
-                v[k] = i;
-            }
+        int n;
+        long long c;
+
+        cin >> n >> c;
+        int arr[n];
+        long long b = 0, a = 0;
+        for(int i = 0 ; i < n ; i++){
+            cin >> arr[i];
+            b += arr[i];
+            a += arr[i]*arr[i];
         }
 
-        sort(v.begin(),v.end(),greater<int>());
-        int i;
-        for(i = 0 ; i < v.size() ; i++){
-            if(v[i]==0) break;
-        }
-        for(int j = i ; j >= 0; j--){
-            cout << v[j] << " ";
-        }
-        cout << endl;
-        
+        //
+        cout << binarySearchForTheQuestion(0,10,b,a,c,n) << endl;
     }
+
     
 }
