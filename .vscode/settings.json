@@ -2,7 +2,10 @@
     "C_Cpp.errorSquiggles": "disabled",
     "files.associations": {
         "iostream": "cpp",
-        "complex": "cpp"
+        "complex": "cpp",
+        "set": "cpp",
+        "__tree": "cpp",
+        "bitset": "cpp"
     },
     "workbench.colorCustomizations": {
         "activityBar.activeBackground": "#3333ff",

@@ -54,7 +54,6 @@ class Heap{
 
         while(data!=-1){
             Tree[++leafIndex] = data;
-            
             cin >> data;
         }
         // 
