@@ -5,7 +5,8 @@
         "complex": "cpp",
         "set": "cpp",
         "__tree": "cpp",
-        "bitset": "cpp"
+        "bitset": "cpp",
+        "vector": "cpp"
     },
     "workbench.colorCustomizations": {
         "activityBar.activeBackground": "#3333ff",
