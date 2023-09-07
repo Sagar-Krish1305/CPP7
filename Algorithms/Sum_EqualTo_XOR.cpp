@@ -22,6 +22,8 @@ int main(){
    }
 
 
+
+
     cout << pow(2,floor(log2(a)+1)-count) << endl;
 
 
